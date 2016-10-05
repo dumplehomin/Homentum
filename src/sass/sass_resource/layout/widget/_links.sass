@@ -1,0 +1,89 @@
+.links_widget
+	+position( $p: absolute, $l: 15px, $t: 15px )	
+	&.show
+		.links
+			@extend %opacity_1
+	&.show .link_list_wrap
+		@extend %block
+	.links
+		@extend %cursor_pointer
+		@extend %font-wei_600
+		opacity: .5
+		font-size: 1.5rem
+		&:hover
+			@extend %opacity_1
+
+.link_list_wrap
+	@extend %none
+	@extend %relative
+
+	width: 150px
+	font-size: 1.3rem
+	background-color: rgba(0, 0, 0, 0.5)
+
+	li
+		@extend %relative
+		opacity: .5
+		background-color: rgba(0, 0, 0, 0.2)
+
+		&:hover
+			opacity: 1
+
+		a
+			white-space: nowrap
+			+padding(5px 10px)
+			padding-left: 25px
+			@extend %font-wei_400
+			@extend %over_hidden
+			background-position: 4px center
+		.destroy
+			@extend %inline_block
+			@extend %txt-align_center
+			+position(absolute, $r: 8px, $t: 5px )
+			width: 15px
+			height: 15px
+			font-size: 1.2rem
+			border: 1px solid transparent
+			border-radius: 10px
+
+			&:hover
+				border: 1px solid #fff
+				border-radius: 10px
+				
+
+
+	.add
+		@extend %block
+		@extend %txt-align_center
+		+position( $p: absolute, $r: 5px, $t: 2px )
+		font-size: 2.3rem
+		opacity: .5
+		width: 23px
+		height: 23px
+		line-height: 23px
+		border: 2px solid transparent
+		&:hover
+			opacity: 1
+			border: 2px solid #fff
+			border-radius: 13px
+
+	.add_link_wrap
+		@extend %width_100
+		@extend %none
+		&.show
+			@extend %block
+		
+		input
+			@extend %width_100
+			@extend %font-wei_400
+			letter-spacing: 1px
+			+padding( 3px 3px 3px 10px )
+			transition: all .5s
+			&.error
+				background-color: rgba(255, 255, 255, 0.5)
+
+			
+
+
+
+

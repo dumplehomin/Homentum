@@ -1,0 +1,28 @@
+html, body
+	@extend %height_100
+	@extend %over_hidden
+	@extend %bg-color_000
+	@extend %color_fff
+	font-family: 'spoqa', 'Sans-serif'
+	font-size: 10px
+body *
+	outline: none
+
+ul
+	@extend %list-style_none
+
+a
+	@extend %color_fff
+	@extend %txt-decoration_non
+	@extend %block
+
+::-webkit-scrollbar
+	width: 5px
+::-webkit-scrollbar-thumb
+	background: rgba( 255, 255, 255, .5 )
+	border-radius: 20px
+
+h1, h2
+	text-shadow: 2px 2px #000
+.widget
+	text-shadow: 2px 2px #000

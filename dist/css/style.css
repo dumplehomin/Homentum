@@ -1,0 +1,590 @@
+@charset "UTF-8";
+@import url(../resource/ress.css);
+@import "//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css";
+.setting_help .hotkey_account ul:after {
+			content: "";
+}
+
+.setting_help .hotkey_account ul:after, a, .join_container .join_input, .links_widget.show .link_list_wrap, .link_list_wrap .add, .link_list_wrap .add_link_wrap.show, .todo_widget.show .todo_list_wrap, .todo_list_wrap.empty .todo_empty, .todo_list_wrap .todo_empty.empty, .todo_list_wrap li .todo_item, .todo_list_wrap .add_todo_wrap.show, .setting_widget.show .setting_wrap, .setting_wrap .setting_list li.show div, .setting_wrap .setting_list li > span, .setting_wrap .setting_list li > div label {
+			display: block;
+}
+
+.loading.off, .link_list_wrap, .link_list_wrap .add_link_wrap, .todo_list_wrap, .todo_list_wrap .todo_empty, .setting_wrap, .setting_wrap .setting_list li > div, .setting_wrap .setting_list li > div span {
+			display: none;
+}
+
+.loading .loader .square, .weather_widget .wind > span, .link_list_wrap li .destroy, .todo_list_wrap li .todo_remove {
+			display: inline-block;
+}
+
+.setting_help .hotkey_account ul:after {
+			clear: both;
+}
+
+.weather_widget > div, .setting_help .hotkey_account li {
+			float: left;
+}
+
+.loading, .background, .content_container, .wind, .city, .link_list_wrap .add_link_wrap, .link_list_wrap .add_link_wrap input, .todo_list_wrap .add_todo_wrap, .todo_list_wrap .add_todo_wrap input {
+			width: 100%;
+}
+
+.loading, .background, .content_container, html, body {
+			height: 100%;
+}
+
+.loading .loader .square {
+			background-color: #fff;
+}
+
+html, body {
+			background-color: #000;
+}
+
+.background {
+			background-position: center;
+}
+
+.background {
+			background-size: cover;
+}
+
+html, body, a {
+			color: #fff;
+}
+
+.link_list_wrap, .link_list_wrap li, .todo_list_wrap li, .setting_wrap .setting_list {
+			position: relative;
+}
+
+.loading, .background, .content_container, .loading .loader, .todo_list_wrap {
+			position: absolute;
+}
+
+.loading, .background, .content_container {
+			top: 0;
+}
+
+.loading, .background, .content_container {
+			left: 0;
+}
+
+.loading .loader {
+			top: 50%;
+}
+
+.loading .loader {
+			left: 50%;
+}
+
+html, body, .link_list_wrap li a, .todo_list_wrap li .todo_item {
+			overflow: hidden;
+}
+
+.join_container .question, .join_container .join_input, .clock_widget, .weather_widget > div, .link_list_wrap li .destroy, .link_list_wrap .add, .todo_list_wrap .todo_empty, .todo_list_wrap li .todo_remove {
+			text-align: center;
+}
+
+a {
+			text-decoration: none;
+}
+
+.links_widget .links, .todo_widget .todo, .setting_widget .setting span, .setting_wrap .setting_list li > span, .setting_wrap .setting_list li > div button {
+			cursor: pointer;
+}
+
+.background, .content_container {
+			opacity: 0;
+}
+
+.loading .loader .square, .background.on, .links_widget.show .links, .links_widget .links:hover, .todo_widget.show .todo, .todo_widget .todo:hover, .content_container.on {
+			opacity: 1;
+}
+
+.join_container .join_input {
+			outline: 0;
+}
+
+.todo_list_wrap {
+			font-weight: 200;
+}
+
+.link_list_wrap li a, .link_list_wrap .add_link_wrap input, .todo_list_wrap .add_todo_wrap input {
+			font-weight: 400;
+}
+
+.links_widget .links, .todo_widget .todo {
+			font-weight: 600;
+}
+
+ul {
+			list-style: none;
+}
+
+.join_container, .clock_widget {
+			position: absolute;
+			top: 50%;
+			right: 0;
+			left: 0;
+			-webkit-transform: translateY(-50%);
+			        transform: translateY(-50%);
+}
+
+html, body {
+			font-family: 'spoqa', 'Sans-serif';
+			font-size: 10px;
+}
+
+body * {
+			outline: none;
+}
+
+::-webkit-scrollbar {
+			width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+			background: rgba(255, 255, 255, 0.5);
+			border-radius: 20px;
+}
+
+h1, h2 {
+			text-shadow: 2px 2px #000;
+}
+
+.widget {
+			text-shadow: 2px 2px #000;
+}
+
+@font-face {
+			font-family: 'spoqa', 'Sans-serif';
+}
+
+.loading {
+			background-color: rgba(0, 0, 0, 0.7);
+			z-index: 100;
+}
+
+.loading .loader {
+			-webkit-transform: translateX(-50%) translateY(-50%);
+			        transform: translateX(-50%) translateY(-50%);
+			width: 70px;
+			height: 70px;
+			line-height: 19px;
+}
+
+.loading .loader .square {
+			width: 32px;
+			height: 32px;
+			-webkit-animation: focusfade 1.2s infinite;
+			        animation: focusfade 1.2s infinite;
+}
+
+.loading .loader .square:nth-child(2) {
+			-webkit-animation-delay: .3s;
+			        animation-delay: .3s;
+}
+
+.loading .loader .square:nth-child(3) {
+			-webkit-animation-delay: .9s;
+			        animation-delay: .9s;
+}
+
+.loading .loader .square:nth-child(4) {
+			-webkit-animation-delay: .6s;
+			        animation-delay: .6s;
+}
+
+@-webkit-keyframes focusfade {
+			0% {
+						opacity: .6;
+						background: #fff;
+			}
+			30% {
+						opacity: .6;
+						background: #000;
+			}
+			60% {
+						opacity: .4;
+			}
+			75% {
+						opacity: .6;
+			}
+			100% {
+						opacity: .6;
+						background: #fff;
+			}
+}
+
+@keyframes focusfade {
+			0% {
+						opacity: .6;
+						background: #fff;
+			}
+			30% {
+						opacity: .6;
+						background: #000;
+			}
+			60% {
+						opacity: .4;
+			}
+			75% {
+						opacity: .6;
+			}
+			100% {
+						opacity: .6;
+						background: #fff;
+			}
+}
+
+.background {
+			-webkit-transition: all 3s;
+			transition: all 3s;
+}
+
+.join_container .question {
+			line-height: 100%;
+			font-size: 6.5rem;
+}
+
+.join_container .join_input {
+			margin: 0 auto;
+			font-size: 5rem;
+			border-bottom: 3px solid #fff;
+}
+
+.clock_widget .clock {
+			font-size: 4.5rem;
+			letter-spacing: -5px;
+}
+
+.clock_widget .user_name {
+			font-size: 3.5rem;
+}
+
+.weather_widget {
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			width: 65px;
+}
+
+.weather_widget .temp {
+			margin-left: 4px;
+			margin-top: 6px;
+			font-size: 2rem;
+}
+
+.weather_widget .temp:before {
+			content: "°";
+			position: absolute;
+			top: 3px;
+			right: 0;
+}
+
+.weather_widget .wind .wind_position {
+			width: 35%;
+}
+
+.weather_widget .wind .wind_speed {
+			width: 65%;
+}
+
+.weather_widget .city {
+			font-size: 1.2rem;
+}
+
+.links_widget {
+			position: absolute;
+			top: 15px;
+			left: 15px;
+}
+
+.links_widget .links {
+			opacity: .5;
+			font-size: 1.5rem;
+}
+
+.link_list_wrap {
+			width: 150px;
+			font-size: 1.3rem;
+			background-color: rgba(0, 0, 0, 0.5);
+}
+
+.link_list_wrap li {
+			opacity: .5;
+			background-color: rgba(0, 0, 0, 0.2);
+}
+
+.link_list_wrap li:hover {
+			opacity: 1;
+}
+
+.link_list_wrap li a {
+			white-space: nowrap;
+			padding: 5px 10px;
+			padding-left: 25px;
+			background-position: 4px center;
+}
+
+.link_list_wrap li .destroy {
+			position: absolute;
+			top: 5px;
+			right: 8px;
+			width: 15px;
+			height: 15px;
+			font-size: 1.2rem;
+			border: 1px solid transparent;
+			border-radius: 10px;
+}
+
+.link_list_wrap li .destroy:hover {
+			border: 1px solid #fff;
+			border-radius: 10px;
+}
+
+.link_list_wrap .add {
+			position: absolute;
+			top: 2px;
+			right: 5px;
+			font-size: 2.3rem;
+			opacity: .5;
+			width: 23px;
+			height: 23px;
+			line-height: 23px;
+			border: 2px solid transparent;
+}
+
+.link_list_wrap .add:hover {
+			opacity: 1;
+			border: 2px solid #fff;
+			border-radius: 13px;
+}
+
+.link_list_wrap .add_link_wrap input {
+			letter-spacing: 1px;
+			padding: 3px 3px 3px 10px;
+			-webkit-transition: all .5s;
+			transition: all .5s;
+}
+
+.link_list_wrap .add_link_wrap input.error {
+			background-color: rgba(255, 255, 255, 0.5);
+}
+
+.todo_widget {
+			position: absolute;
+			right: 15px;
+			bottom: 15px;
+}
+
+.todo_widget .todo {
+			opacity: .5;
+			font-size: 1.5rem;
+}
+
+.todo_list_wrap {
+			bottom: 100%;
+			right: 0;
+			width: 300px;
+			font-size: 1.5rem;
+			background-color: rgba(0, 0, 0, 0.5);
+}
+
+.todo_list_wrap .todo_count {
+			padding: 5px;
+			padding-left: 10px;
+}
+
+.todo_list_wrap .todo_empty {
+			padding: 5px;
+}
+
+.todo_list_wrap .todo_empty .empty_content .empty_graphic {
+			font-size: 3rem;
+}
+
+.todo_list_wrap .todo_empty .empty_content .empty_message {
+			font-size: 15px;
+}
+
+.todo_list_wrap li {
+			opacity: .5;
+			background-color: rgba(0, 0, 0, 0.2);
+			padding: 10px;
+			padding-right: 30px;
+}
+
+.todo_list_wrap li.check .todo_item {
+			text-decoration: line-through;
+}
+
+.todo_list_wrap li .todo_check {
+			position: absolute;
+			top: 12px;
+			left: 10px;
+			margin-right: 5px;
+}
+
+.todo_list_wrap li .todo_item {
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			word-wrap: normal;
+			text-indent: 20px;
+}
+
+.todo_list_wrap li .todo_remove {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			width: 17px;
+			height: 17px;
+			line-height: 15px;
+			border: 1px solid transparent;
+			border-radius: 10px;
+}
+
+.todo_list_wrap li .todo_remove:hover {
+			border: 1px solid #fff;
+}
+
+.todo_list_wrap li:hover {
+			opacity: 1;
+}
+
+.todo_list_wrap .add_todo_wrap input {
+			letter-spacing: .5px;
+			padding: 3px 3px 3px 10px;
+			-webkit-transition: all .5s;
+			transition: all .5s;
+}
+
+.todo_list_wrap .add_todo_wrap input.error {
+			background-color: rgba(255, 255, 255, 0.5);
+}
+
+.setting_widget {
+			position: absolute;
+			bottom: 15px;
+			left: 15px;
+}
+
+.setting_widget .setting {
+			font-size: 2.5rem;
+}
+
+.setting_wrap {
+			position: absolute;
+			bottom: 100%;
+			left: 0;
+			width: 400px;
+			height: 220px;
+			background-color: rgba(0, 0, 0, 0.8);
+}
+
+.setting_wrap .setting_list {
+			width: 100%;
+			height: 100%;
+			font-size: 13px;
+}
+
+.setting_wrap .setting_list li.show span {
+			opacity: 1;
+			background-color: rgba(255, 255, 255, 0.3);
+}
+
+.setting_wrap .setting_list li > span {
+			width: 35%;
+			padding: 5px;
+			padding-left: 10px;
+			opacity: .3;
+}
+
+.setting_wrap .setting_list li > span:hover {
+			opacity: 1;
+			background-color: rgba(255, 255, 255, 0.3);
+}
+
+.setting_wrap .setting_list li > div {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 65%;
+			padding: 10px 15px;
+			min-height: 220px;
+			max-height: 220px;
+			overflow-y: scroll;
+			font-size: 15px;
+			color: #ccc;
+			border-left: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.setting_wrap .setting_list li > div h4, .setting_wrap .setting_list li > div h5 {
+			padding-bottom: 3px;
+			margin-bottom: 3px;
+}
+
+.setting_wrap .setting_list li > div h4 {
+			border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.setting_wrap .setting_list li > div p {
+			font-size: 13px;
+			margin-bottom: 15px;
+}
+
+.setting_wrap .setting_list li > div input {
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			padding: 3px;
+}
+
+.setting_wrap .setting_list li > div button {
+			padding: 5px 10px;
+			background: #d9534f;
+			border-radius: 2px;
+			color: #fff;
+			font-size: 13px;
+}
+
+.setting_wrap .setting_list li > div button:hover {
+			background: #c9302c;
+}
+
+.setting_wrap .setting_list li > div span {
+			color: red;
+			background-color: rgba(255, 255, 255, 0) !important;
+			text-shadow: none;
+			margin-left: 5px;
+}
+
+.password_setting div,
+.reset div {
+			font-size: 13px;
+			margin-bottom: 12px;
+}
+
+.password_setting div.error input,
+.reset div.error input {
+			border-color: red !important;
+}
+
+.password_setting div.error span,
+.reset div.error span {
+			display: inline-block !important;
+}
+
+.setting_help .hotkey_account {
+			margin-top: 5px;
+}
+
+.setting_help .hotkey_account li {
+			width: 50%;
+}
+
+.content_container {
+			-webkit-transition: all 1s;
+			transition: all 1s;
+}
+
+/*# sourceMappingURL=style.css.map */

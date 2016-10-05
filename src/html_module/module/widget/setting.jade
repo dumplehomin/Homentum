@@ -1,0 +1,51 @@
+div(class="setting_widget widget")
+	.setting 
+		span 🛠
+		.setting_wrap
+			ul.setting_list
+				li.setting_password
+					span.btn Password
+					div.Password.setting_view.show
+						div.password_setting
+							h4 Password
+							div.old_pass
+								label(for="old") Old password
+								input#old.old_pass(type="password")
+								span isn't valid
+							div.new_pass
+								label(for="new") New password
+								input#new.new_pass(type="password")
+								span doesn't match
+							div.confirm_pass
+								label(for="confirm") Confirm password
+								input#confirm.confirm_pass(type="password")
+							button(type="button") OK
+
+				//- li.setting_bg.setting_view
+				//- 	span.btn Backgrounds
+				//- 	div.backgrounds
+				//- 		div.backgroun_setting
+				//- 			h4 Backgrounds
+				li.setting_help
+					span.btn Help
+					div.help.setting_view
+						div.help_setting
+							h4 Help
+							h5 TIPS
+							p  - To change the name , double -click the name can be changed.
+							h5 HOTKEYS
+								div.hotkey_account
+									ul
+										li T - Todo
+										li L - Links
+										li S - Search
+										li , - Settings
+				li.setting_reset
+					span.btn Reset
+					div.reset.setting_view
+						div.reset_setting
+							h4 Reset
+							input.del_user(type="password" placeholder="Your Password")
+							button(type="button") Delete
+							span isn't valid
+

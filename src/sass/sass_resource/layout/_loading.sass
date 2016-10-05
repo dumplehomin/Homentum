@@ -1,0 +1,102 @@
+.loading
+	@extend %c_ab_full
+	background-color: rgba(0, 0, 0, .7)
+	z-index: 100
+
+	&.off
+		@extend %none
+
+	.loader
+		@extend %absolute
+		@extend %left_50
+		@extend %top_50
+		transform: translateX(-50%) translateY(-50%)
+		width: 70px
+		height: 70px
+		line-height: 19px
+		&
+			.square 
+				@extend %inline_block
+				@extend %bg-color_fff
+				@extend %opacity_1
+				width: 32px
+				height: 32px
+				animation: focusfade 1.2s infinite
+		&
+			.square:nth-child(2) 
+				animation-delay: .3s
+		&
+			.square:nth-child(3) 
+				animation-delay: .9s
+		&
+			.square:nth-child(4) 
+				animation-delay: .6s
+
+@keyframes focusfade 
+	0% 
+		opacity: .6
+		background: #fff
+	30% 
+		opacity: .6
+		background: #000
+	60% 
+		opacity: .4
+	75% 
+		opacity: .6
+	100% 
+		opacity: .6
+		background: #fff
+
+
+// .loading
+// 	position: fixed
+// 	width: 202px
+// 	height: 202px
+// 	left: 50%
+// 	top: 50%
+// 	margin: -101px 0 0 -101px
+// 	perspective: 400px
+
+// .cube
+// 	width: 200px
+// 	height: 200px
+// 	position: absolute
+// 	border: 1px dotted #333
+// 	transform-style: preserve-3d
+// 	animation: roll 3s linear infinite
+
+// @keyframes roll
+// 	from
+// 		transform: rotateX(0) rotateY(0)
+// 	to
+// 		transform: rotateX(360deg) rotateY(360deg)
+
+// .cube
+// 	.side
+// 		width: 198px
+// 		height: 198px
+// 		border: 1px solid #000
+// 		font: bold 200px/200px Arial,sans-serif
+// 		text-align: center
+// 		color: #fff
+// 		position: absolute
+// 		opacity: .8
+
+// 		&:nth-child(1)
+// 			background: red
+// 			transform: translateZ(100px)
+// 		&:nth-child(2)
+// 			background: lime
+// 			transform: rotateY(180deg) translateZ(100px)
+// 		&:nth-child(3)
+// 			background: orange
+// 			transform: rotateY(90deg) translateZ(100px)
+// 		&:nth-child(4)
+// 			background: blue
+// 			transform: rotateY(270deg) translateZ(100px)
+// 		&:nth-child(5)
+// 			background: purple
+// 			transform: rotateX(90deg) translateZ(100px)
+// 		&:nth-child(6)
+// 			background: navy
+// 			transform: rotateX(270deg) translateZ(100px)

@@ -1,0 +1,27 @@
+.weather_widget
+	+position( absolute, $r: 15px, $t: 15px )
+	
+	width: 65px
+
+	& > div
+		@extend %float_left
+		@extend %txt-align_center
+	.temp
+		+margin(left top, 4px 6px)
+		font-size: 2rem
+		&:before
+			content: "°"
+			+position( absolute, $r: 0, $t: 3px )
+
+	.wind
+		& > span
+			@extend %inline_block
+		.wind_position
+			width: 35%
+		.wind_speed
+			width: 65%
+	.city
+		font-size: 1.2rem
+
+.wind, .city
+	@extend %width_100

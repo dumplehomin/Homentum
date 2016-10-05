@@ -1,0 +1,94 @@
+.todo_widget
+	+position( $p: absolute, $r: 15px, $b: 15px )
+	&.show
+		.todo
+			@extend %opacity_1
+	&.show .todo_list_wrap
+		@extend %block
+	.todo
+		@extend %cursor_pointer
+		@extend %font-wei_600
+		opacity: .5
+		font-size: 1.5rem
+		&:hover
+			@extend %opacity_1
+.todo_list_wrap
+	@extend %none
+	@extend %absolute
+	bottom: 100%
+	right: 0
+	width: 300px
+	font-size: 1.5rem
+	@extend %font-wei_200
+	background-color: rgba(0, 0, 0, 0.5)
+	&.empty
+		.todo_empty
+			@extend %block	
+
+	
+	.todo_count
+		padding: 5px
+		padding-left: 10px
+
+	.todo_empty
+		@extend %none
+		@extend %txt-align_center
+		padding: 5px
+		.empty_content
+			.empty_graphic
+				font-size: 3rem
+			.empty_message 
+				font-size: 15px
+		&.empty
+			@extend %block
+
+	li
+		@extend %relative
+		opacity: .5
+		background-color: rgba(0, 0, 0, 0.2)
+		padding: 10px
+		padding-right: 30px
+		&.check
+			.todo_item
+				text-decoration: line-through
+
+		.todo_check
+			+position(absolute, $l: 10px, $t: 12px)
+			margin-right: 5px
+		.todo_item
+			@extend %block
+			@extend %over_hidden
+			white-space: nowrap
+			text-overflow: ellipsis
+			word-wrap: normal
+			text-indent: 20px
+		.todo_remove
+			@extend %inline_block
+			@extend %txt-align_center
+			+position(absolute, $r: 10px, $t: 10px)
+			width: 17px
+			height: 17px
+			line-height: 15px
+			border: 1px solid transparent
+			border-radius: 10px
+
+			&:hover
+				border: 1px solid #fff
+
+		&:hover
+			opacity: 1
+
+	.add_todo_wrap
+		@extend %width_100
+		// @extend %none
+		&.show
+			@extend %block
+		
+		input
+			@extend %width_100
+			@extend %font-wei_400
+			letter-spacing: .5px
+			+padding( 3px 3px 3px 10px )
+			transition: all .5s
+			&.error
+				background-color: rgba(255, 255, 255, 0.5)

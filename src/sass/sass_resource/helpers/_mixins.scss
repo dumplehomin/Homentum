@@ -1,0 +1,93 @@
+@mixin padding( $a: null, $b: null ){
+	$type: padding;
+	@include boxAreaCheck( $type, $a, $b );
+}
+
+@mixin margin( $a: null, $b: null ){
+	$type: margin;
+	@include boxAreaCheck( $type, $a, $b );
+}
+
+@mixin borderRadius( $a: null ){
+	$type: border-radius;
+	@include boxAreaCheck( $type, $a );
+}
+
+@mixin boxAreaCheck(
+	$type: null,
+	$a: null, 
+	$b: null
+) {
+	@if type-of($a) == number or $a == auto {
+		@include boxArea($type, $a);
+	}@else if type-of($a) == list {
+		@if type-of(nth($a, 1)) == string {
+			@if type-of($b) == list {
+				$i: 1;
+				@each $e in $a {
+					@include boxArea(#{$type}-#{$e}, nth($b, $i) );
+					$i: $i + 1;
+				}
+			}@else {
+				@each $e in $a {
+					@include boxArea(#{$type}-#{$e}, $b);
+				}
+			}
+		}@else {
+			@include boxArea($type, $a);
+		}
+	}@else if type-of($a) == string{
+		@if $a != auto {
+			@include boxArea(#{$type}-#{$a}, $b);
+		}
+	}
+}
+
+@mixin boxArea(
+	$a: null,
+	$b: null
+){
+	#{$a}: $b;
+}
+//-------------------------------------------------------------------------
+@mixin position(
+	$p: null,
+	$t: null,
+	$r: null, 
+	$b: null,
+	$l: null
+){
+	@if $p == null {
+		position: relative;
+	}@else {
+		position: $p;
+	}
+
+	top: $t;
+	right: $r;
+	bottom: $b;
+	left: $l;
+}
+//-------------------------------------------------------------------------
+@mixin font( $ff: sans-serif, $fs: null, $lh: 1.5, $fc: #000 ){
+	font-family: $ff;
+	font-size: $fs;
+	line-height: $lh;
+	color: $fc;
+}
+// @mixin font-shorthand(
+// 	$fz: null,
+// 	$ff: null,
+// 	$lh: 1.5,
+// 	$etc: null
+// ){
+// 	@if $fz == null or $ff == null {
+// 		@error "font"
+// 	}
+
+// 	font: $etc $etc _fontShortHand( $fz, $lh ) $ff
+// }
+
+// @mixin font( $args... ){
+// 	@include font-shorthand( $args... );
+// }

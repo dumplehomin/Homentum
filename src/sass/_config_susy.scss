@@ -1,0 +1,19 @@
+$susy: (
+  columns: 12,
+  gutters: 20px/60px,
+  gutter-position: after, 
+  debug: (
+	image: show,
+	color: #69dff8,
+	output: overlay,
+	toggle: top right
+  )
+);
+
+body::before {
+	opacity: 0.6;
+	height: 300vh;
+}
+
+// math = static  %단위를 px 단위로 바꾼다. column-width와 항상 함께 사용해야 한다
+// gutter-position = 왼쪽:before, 오른쪽:after,양쪽: split, 양쪽패딩:inside

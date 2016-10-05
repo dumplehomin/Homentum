@@ -1,0 +1,50 @@
+@import "placeholder"
+@import "mixins"
+
+html
+	@extend %bg-color_#000
+	font-family: 'Open Sans', sans-serif
+	font-size: 16px
+body
+	background-image: url("../images/sign_up_bg.jpg")
+	height: 100vh
+	color: #fff
+
+body.color1
+	a
+	input
+		color: $color1
+
+	.page_container.sign_up
+		main
+			fieldset
+				.input_el
+					border-color: $color1
+	.submit
+		background-color: $color1
+
+body.color2
+	a
+	input
+		color: $color2
+
+	.page_container.sign_up
+		main
+			fieldset
+				.input_el
+					border-color: $color2
+	.submit
+		background-color: $color2
+
+body.color3
+	a
+	input
+		color: $color3
+
+	.page_container.sign_up
+		main
+			fieldset
+				.input_el
+					border-color: $color3
+	.submit
+		background-color: $color3

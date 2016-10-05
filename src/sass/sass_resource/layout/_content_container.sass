@@ -1,0 +1,9 @@
+@import "join/join"
+@import "widget/widget"
+
+.content_container
+	@extend %c_ab_full
+	@extend %opacity_0
+	transition: all 1s
+	&.on
+		@extend %opacity_1

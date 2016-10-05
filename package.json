@@ -1,0 +1,46 @@
+{
+  "name": "momentum",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "unsplash-api": "^1.2.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.15.0",
+    "browserify": "^13.1.0",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-html-ssi": "0.0.92",
+    "gulp-htmlincluder": "^0.1.0",
+    "gulp-if": "^2.0.1",
+    "gulp-inject": "^4.1.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-sass": "^2.3.2",
+    "gulp-sass-lint": "^1.2.0",
+    "gulp-shell": "^0.5.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-sync": "^0.1.4",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.9",
+    "gulp-watch-jade": "^1.0.2",
+    "jade": "^1.11.0",
+    "lodash.assign": "^4.2.0",
+    "require-dir": "^0.3.0",
+    "universal-config": "^0.2.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0",
+    "wiredep": "^4.0.0",
+    "yargs": "^5.0.0"
+  }
+}

@@ -1,0 +1,119 @@
+.setting_widget
+	+position( $p: absolute, $l: 15px, $b: 15px )
+	&.show .setting_wrap
+		@extend %block
+	.setting
+		font-size: 2.5rem
+		span
+			@extend %cursor_pointer
+.setting_wrap
+	@extend %none
+	+position( $p: absolute, $b: 100%, $l: 0 )
+	width: 400px
+	height: 220px
+	background-color: rgba(0, 0, 0, .8)
+
+	.setting_list
+		@extend %relative
+		width: 100%
+		height: 100%
+		font-size: 13px
+
+		li
+			&.show
+				span
+					opacity: 1
+					background-color: rgba(255, 255, 255, 0.3)
+				div
+					@extend %block
+
+			&>span
+				@extend %block
+				@extend %cursor_pointer
+				width: 35%
+				padding: 5px
+				padding-left: 10px
+				opacity: .3
+
+				&:hover
+					opacity: 1
+					background-color: rgba(255, 255, 255, 0.3)
+			&>div
+				@extend %none
+				+position( $p: absolute, $r: 0, $t: 0 )
+				width: 65%
+				padding: 10px 15px
+				min-height: 220px
+				max-height: 220px
+				overflow-y: scroll
+				font-size: 15px
+				color: #ccc
+				border-left: 1px solid rgba(255, 255, 255, .4)
+
+				h4, h5
+					padding-bottom: 3px
+					margin-bottom: 3px
+				h4
+					border-bottom: 1px solid rgba(255, 255, 255, .4)
+				p
+					font-size: 13px
+					margin-bottom: 15px
+				label
+					@extend %block
+				input
+					border: 1px solid #ccc
+					border-radius: 3px
+					padding: 3px
+				button
+					@extend %cursor_pointer
+					padding: 5px 10px
+					background: #d9534f
+					border-radius: 2px
+					color: #fff
+					font-size: 13px
+					&:hover
+						background: #c9302c
+				span
+					@extend %none
+					color: red
+					background-color: rgba(255, 255, 255, 0)!important
+					text-shadow: none
+					margin-left: 5px
+
+
+.password_setting,
+.reset
+	div
+		font-size: 13px
+		margin-bottom: 12px
+		&.error
+			input
+				border-color: red!important
+			span
+				display: inline-block!important
+
+.setting_help
+	.hotkey_account
+		ul:after
+			@extend %clearfix
+
+		margin-top: 5px
+		li
+			@extend %float_left
+			width: 50%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,267 @@
+//Pseudo---------------------------------------------------------
+%content_empty
+	content: ""
+//layout  ---------------------------------------------------------
+%block
+	display: block
+
+%none
+	display: none
+
+%inline_block
+	display: inline-block
+
+%inline
+	display: inline
+
+%clearfix
+	@extend %content_empty
+	@extend %block
+	clear: both
+
+%float_left
+	float: left
+
+%float_right
+	float: right
+
+%border_box
+	box-sizing: border-box
+//size  ---------------------------------------------------------
+%width_100
+	width: 100%
+
+%width_50
+	width: 50%
+
+%width_100vw
+	width: 100vw
+
+%width_100vh
+	width: 100vh
+
+%height_100
+	height: 100%
+
+%height_100vh
+	height: 100vh
+
+%height_100vw
+	height: 100vw
+
+%height_auto
+	height: auto
+
+%width-height_100
+	width: 100%
+	height: 100%
+
+%margin_0
+	margin: 0
+
+%margin-top_0
+	margin-top: 0
+
+%margin-bottom_0
+	margin-bottom: 0
+
+%margin-left_0
+	margin-left: 0
+
+%margin-right_0
+	margin-right: 0
+
+%margin_0_auto
+	margin: 0 auto
+
+%margin_auto
+	margin: auto
+
+//bg  ---------------------------------------------------------
+%bg-color_fff
+	background-color: #fff
+
+%bg-color_000
+	background-color: #000
+
+%bg-position_center
+	background-position: center
+
+%bg-size_100
+	background-size: 100%
+
+%bg-size_cover
+	background-size: cover
+
+%bg_repeat
+	background-repeat: repeat
+
+%bg_repeat_x
+	background-repeat: repeat-x
+
+%bg_repeat_y
+	background-repeat: repeat-y
+//color  ---------------------------------------------------------
+%color_fff
+	color: #fff
+
+%color_000
+	color: #000
+
+%color_off
+	color: transparent
+
+//position  ---------------------------------------------------------
+%relative
+	position: relative
+
+%absolute
+	position: absolute
+
+%fixed
+	position: fixed
+
+%z-index_0
+	z-index: 0
+
+%top_0
+	top: 0
+
+%bottom_0
+	bottom: 0
+
+%left_0
+	left: 0
+
+%right_0
+	right: 0
+
+%top_50
+	top: 50%
+
+%bottom_50
+	bottom: 50%
+
+%left_50
+	left: 50%
+
+%right_50
+	right: 50%
+
+%top_100
+	top: 100%
+
+%bottom_100
+	bottom: 100%
+
+%left_100
+	left: 100%
+
+%right_100
+	right: 100%
+
+%position_width_center
+	@extend %absolute
+	@extend %left_0
+	@extend %right_0
+	@extend %margin_0_auto
+
+%absolute_0_0
+	@extend %absolute
+	@extend %left_0
+	@extend %top_0
+
+//overflow  ---------------------------------------------------------
+%over_hidden
+	overflow: hidden
+//border  ---------------------------------------------------------
+%border_0
+	border: 0 none
+//text  ---------------------------------------------------------
+%uppercase
+	text-transform: uppercase
+
+%capitalize
+	text-transform: capitalize
+
+%txt-align_center
+	text-align: center
+
+%txt-align_right
+	text-align: right
+
+%txt-align_left
+	text-align: left
+
+%txt-inent_0
+	text-indent: 0
+
+%txt_off
+	@extend %width_100
+	@extend %color_off
+	@extend %absolute
+	z-index: -1
+
+%offscreen
+	@extend %absolute
+	@extend %over_hidden
+	height: 1px
+	width: 1px
+	clip: rect(1px,1px,1px,1px)
+	word-break: initial
+	word-wrap: initial
+%ir
+	@extend %over_hidden
+	text-indent: -99999em
+%txt-decoration_non
+	text-decoration: none
+//cursor  ---------------------------------------------------------
+%cursor_pointer
+	cursor: pointer
+//opacity  ---------------------------------------------------------
+%opacity_0
+	opacity: 0
+
+%opacity_1
+	opacity: 1
+//outline  ---------------------------------------------------------
+%outline_0
+	outline: 0
+//font  ---------------------------------------------------------
+%font-wei_100
+	font-weight: 100
+%font-wei_200
+	font-weight: 200
+%font-wei_300
+	font-weight: 300
+%font-wei_400
+	font-weight: 400
+%font-wei_500
+	font-weight: 500
+%font-wei_600
+	font-weight: 600
+%font-wei_700
+	font-weight: 700
+%font-wei_800
+	font-weight: 800
+//list-style  ---------------------------------------------------------
+%list-style_none
+	list-style: none
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
