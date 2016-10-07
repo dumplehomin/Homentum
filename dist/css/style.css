@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import url(../resource/ress.css);
 @import "//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css";
-.setting_help .hotkey_account ul:after {
+.setting_help .hotkey_account ul:after, .setting_background .slider:before {
 			content: "";
 }
 
@@ -9,11 +9,11 @@
 			display: block;
 }
 
-.loading.off, .link_list_wrap, .link_list_wrap .add_link_wrap, .todo_list_wrap, .todo_list_wrap .todo_empty, .setting_wrap, .setting_wrap .setting_list li > div, .setting_wrap .setting_list li > div span {
+.loading.off, .link_list_wrap, .link_list_wrap .add_link_wrap, .todo_list_wrap, .todo_list_wrap .todo_empty, .setting_wrap, .setting_wrap .setting_list li > div, .setting_wrap .setting_list li > div span, .setting_background .switch input {
 			display: none;
 }
 
-.loading .loader .square, .weather_widget .wind > span, .link_list_wrap li .destroy, .todo_list_wrap li .todo_remove {
+.loading .loader .square, .weather_widget .wind > span, .link_list_wrap li .destroy, .todo_list_wrap li .todo_remove, .setting_background .switch {
 			display: inline-block;
 }
 
@@ -33,7 +33,7 @@
 			height: 100%;
 }
 
-.loading .loader .square {
+.loading .loader .square, .setting_background .slider:before {
 			background-color: #fff;
 }
 
@@ -53,7 +53,7 @@ html, body, a {
 			color: #fff;
 }
 
-.link_list_wrap, .link_list_wrap li, .todo_list_wrap li, .setting_wrap .setting_list {
+.link_list_wrap, .link_list_wrap li, .todo_list_wrap li, .setting_wrap .setting_list, .setting_background .switch {
 			position: relative;
 }
 
@@ -89,7 +89,7 @@ a {
 			text-decoration: none;
 }
 
-.links_widget .links, .todo_widget .todo, .setting_widget .setting span, .setting_wrap .setting_list li > span, .setting_wrap .setting_list li > div button {
+.links_widget .links, .todo_widget .todo, .setting_widget .setting span, .setting_wrap .setting_list li > span, .setting_wrap .setting_list li > div button, .setting_background .slider {
 			cursor: pointer;
 }
 
@@ -580,6 +580,54 @@ h1, h2 {
 
 .setting_help .hotkey_account li {
 			width: 50%;
+}
+
+.setting_background .switch {
+			width: 30px;
+			height: 17px;
+}
+
+.setting_background .slider {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background-color: #ccc;
+			-webkit-transition: .4s;
+			transition: .4s;
+			text-indent: 35px;
+}
+
+.setting_background .slider:before {
+			position: absolute;
+			bottom: 2px;
+			left: 2px;
+			height: 13px;
+			width: 13px;
+			-webkit-transition: .4s;
+			transition: .4s;
+}
+
+.setting_background input:checked + .slider {
+			background-color: #2196F3;
+}
+
+.setting_background input:focus + .slider {
+			box-shadow: 0 0 1px #2196F3;
+}
+
+.setting_background input:checked + .slider:before {
+			-webkit-transform: translateX(13px);
+			        transform: translateX(13px);
+}
+
+.setting_background .slider.round {
+			border-radius: 34px;
+}
+
+.setting_background .slider.round:before {
+			border-radius: 50%;
 }
 
 .content_container {

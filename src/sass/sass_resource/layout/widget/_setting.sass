@@ -102,18 +102,37 @@
 			@extend %float_left
 			width: 50%
 
+.setting_background
+	.switch
+		@extend %relative
+		@extend %inline_block
+		width: 30px
+		height: 17px
+		input 
+			@extend %none
 
+	.slider
+		+position( $p: absolute, $l: 0, $b: 0, $t: 0, $r: 0 )
+		@extend %cursor_pointer
+		background-color: #ccc
+		transition: .4s
+		text-indent: 35px
 
+	.slider:before
+		@extend %content_empty
+		@extend %bg-color_fff
+		+position( $p: absolute, $l: 2px, $b: 2px)
+		height: 13px
+		width: 13px
+		transition: .4s
 
-
-
-
-
-
-
-
-
-
-
-
-
+	input:checked + .slider
+		background-color: #2196F3
+	input:focus + .slider
+		box-shadow: 0 0 1px #2196F3
+	input:checked + .slider:before
+		transform: translateX(13px)
+	.slider.round
+		border-radius: 34px
+	.slider.round:before
+		border-radius: 50%

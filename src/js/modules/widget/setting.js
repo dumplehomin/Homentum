@@ -4,6 +4,7 @@ var Store = require("../storage/storage");
 var Buttons = require("./button");
 var _$content = _$.query(".content_container");
 var Encryption = require("../encryption");
+var img_load = require("../image_load/images_load");
 
 var _$setting_widget;
 
@@ -12,6 +13,9 @@ var _$setting_list;
 var JSON = global.JSON;
 
 var setting_html_url = "module/widget/setting.html";
+var cinemagraph_json = "./js/cinemagraph.json";
+var _$background = _$.query(".background");
+var _$loading = _$.query(".loading");
 
 module.exports = function(){
 	setting_load.html( setting_html_url, setupSetting );
@@ -30,6 +34,7 @@ function setupSetting( data ){
 	settingButton();
 	passwordChangeSetting();
 	userReset();
+	cinemagraphSetting();
 }
 
 function settingButton(){
@@ -150,6 +155,26 @@ function userReset(){
 
 function classAddRemove( target, type ){
 	target.parentNode.classList[type]("error");
+}
+
+function cinemagraphSetting(){
+	var _$switch = _$.query(".bg_check");
+
+	_$.eventsOn( _$switch, "click", function( event ){
+		var _$this = event.target;
+		
+		if( _$this.checked ){
+			setting_load.json( cinemagraph_url, cinemaSetting );
+		}else {
+			
+		}
+	});
+}
+
+function cinemaSetting( data ){
+	var img_url = data.cinemagraph[0].url;
+
+	img_load.load( img_url + "1.gif", _$background );
 }
 
 
