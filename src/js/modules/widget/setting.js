@@ -5,6 +5,8 @@ var Buttons = require("./button");
 var _$content = _$.query(".content_container");
 var Encryption = require("../encryption");
 var img_load = require("../image_load/images_load");
+var Cookie = require("../cookie/cookie.js");
+var Delay_fn = require("../delay_fn");
 
 var _$setting_widget;
 
@@ -13,9 +15,12 @@ var _$setting_list;
 var JSON = global.JSON;
 
 var setting_html_url = "module/widget/setting.html";
-var cinemagraph_json = "./js/cinemagraph.json";
+// var cinemagraph_json = "./js/cinemagraph.json";
+var cinemagraph_json = "./cinemagraph/cinemagraph.json";
 var _$background = _$.query(".background");
 var _$loading = _$.query(".loading");
+var cinema_cookie_name = "cinema";
+var bg_cookie_name = "background-image";
 
 module.exports = function(){
 	setting_load.html( setting_html_url, setupSetting );
@@ -30,6 +35,11 @@ function setupSetting( data ){
 	var _$setting =  _$.query(".setting");
 	_$setting_list = _$.query(".setting_list");
 	Buttons( _$setting );
+
+	if( Store.get( "user" ).cinema ){
+		var _$switch = _$.query(".bg_check");
+		_$switch.checked = true;
+	}
 
 	settingButton();
 	passwordChangeSetting();
@@ -162,19 +172,46 @@ function cinemagraphSetting(){
 
 	_$.eventsOn( _$switch, "click", function( event ){
 		var _$this = event.target;
+		var user_info = Store.get("user");
 		
+		_$background.classList.remove("on");
+		$.data( _$loading, "$this").fadeIn("fast");
+		bgLoadCheck();
+
 		if( _$this.checked ){
-			setting_load.json( cinemagraph_url, cinemaSetting );
+			if( !Cookie.get( cinema_cookie_name ) ){
+				setting_load.json( cinemagraph_json, cinemaSetting );
+			}else {
+				img_load.load( Cookie.get( cinema_cookie_name ).value, _$background );
+			}
+
+			user_info.cinema = true;
 		}else {
-			
+			img_load.load( Cookie.get( bg_cookie_name ).value, _$background );
+			user_info.cinema = false;
 		}
+
+		Store.del("user");
+		Store.set( "user", user_info );
 	});
 }
 
-function cinemaSetting( data ){
-	var img_url = data.cinemagraph[0].url;
+function bgLoadCheck(){
+	if( _$background.classList.contains("on") ){
+		$.data( _$loading, "$this").fadeOut("fast");
+	}else {
+		Delay_fn.set( bgLoadCheck, 1000 );
+	}
+}
 
-	img_load.load( img_url + "1.gif", _$background );
+function cinemaSetting( data ){
+	var ciname_url = data.cinemagraph[0].url;
+	var cinema_length = data.cinemagraph[1].total;
+	var random_cinema = Math.floor( Math.random() * cinema_length );
+
+	Cookie.set( cinema_cookie_name, ciname_url + random_cinema + ".gif", "1day" );
+
+	img_load.load( ciname_url + random_cinema + ".gif", _$background );
 }
 
 

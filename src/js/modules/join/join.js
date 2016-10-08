@@ -101,6 +101,8 @@ function inputEventHandler( event ){
 				//비어있는
 				user_info.todo = default_todo;
 
+				user_info.cinema = false;
+
 				//로컬스토리지에 이름과 비번 저장
 				Store.set("user", user_info);
 				$.data( _$loading, "$this").delay(700).fadeIn("fast", function(){

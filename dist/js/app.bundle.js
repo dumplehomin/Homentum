@@ -350,6 +350,7 @@ var URL = "https://api.unsplash.com/photos/?client_id=" + APP_ID;
 var bg_data = {};
 var data_name = "background-image";
 var cookie_name = data_name;
+var cinema_cookie_name = "cinema";
 var current_img_url;
 
 var _$background = _$.query(".background");
@@ -370,8 +371,28 @@ if( !Cookie.get( cookie_name ) ){
 		currentBgUrlSetting( Store.get( data_name ) );
 	}
 }else {
-	current_img_url = Cookie.get( cookie_name ).value;
-	img_load.load( current_img_url, _$background, _$loading );
+	if( !Store.get( "user" ) ){
+		current_img_url = Cookie.get( cookie_name ).value;
+		img_load.load( current_img_url, _$background, _$loading );
+	}else {
+		if( Store.get( "user" ).cinema ){
+			if( Cookie.get( cinema_cookie_name ) ){
+				current_img_url = Cookie.get( cinema_cookie_name ).value;
+				img_load.load( current_img_url, _$background, _$loading );
+			}else {
+				var user_info = Store.get("user");
+				user_info.cinema = false;
+				Store.del("user");
+				Store.set( "user", user_info );
+
+				current_img_url = Cookie.get( cookie_name ).value;
+				img_load.load( current_img_url, _$background, _$loading );	
+			}
+		}else {
+			current_img_url = Cookie.get( cookie_name ).value;
+			img_load.load( current_img_url, _$background, _$loading );
+		}
+	}
 }
 
 //unsplash 에서 이미지 가져오기
@@ -671,6 +692,8 @@ function inputEventHandler( event ){
 				user_info.book = default_bookmark;
 				//비어있는
 				user_info.todo = default_todo;
+
+				user_info.cinema = false;
 
 				//로컬스토리지에 이름과 비번 저장
 				Store.set("user", user_info);
@@ -1110,6 +1133,8 @@ var Buttons = require("./button");
 var _$content = _$.query(".content_container");
 var Encryption = require("../encryption");
 var img_load = require("../image_load/images_load");
+var Cookie = require("../cookie/cookie.js");
+var Delay_fn = require("../delay_fn");
 
 var _$setting_widget;
 
@@ -1118,9 +1143,12 @@ var _$setting_list;
 var JSON = global.JSON;
 
 var setting_html_url = "module/widget/setting.html";
-var cinemagraph_json = "./js/cinemagraph.json";
+// var cinemagraph_json = "./js/cinemagraph.json";
+var cinemagraph_json = "./cinemagraph/cinemagraph.json";
 var _$background = _$.query(".background");
 var _$loading = _$.query(".loading");
+var cinema_cookie_name = "cinema";
+var bg_cookie_name = "background-image";
 
 module.exports = function(){
 	setting_load.html( setting_html_url, setupSetting );
@@ -1135,6 +1163,11 @@ function setupSetting( data ){
 	var _$setting =  _$.query(".setting");
 	_$setting_list = _$.query(".setting_list");
 	Buttons( _$setting );
+
+	if( Store.get( "user" ).cinema ){
+		var _$switch = _$.query(".bg_check");
+		_$switch.checked = true;
+	}
 
 	settingButton();
 	passwordChangeSetting();
@@ -1267,19 +1300,46 @@ function cinemagraphSetting(){
 
 	_$.eventsOn( _$switch, "click", function( event ){
 		var _$this = event.target;
+		var user_info = Store.get("user");
 		
+		_$background.classList.remove("on");
+		$.data( _$loading, "$this").fadeIn("fast");
+		bgLoadCheck();
+
 		if( _$this.checked ){
-			setting_load.json( cinemagraph_url, cinemaSetting );
+			if( !Cookie.get( cinema_cookie_name ) ){
+				setting_load.json( cinemagraph_json, cinemaSetting );
+			}else {
+				img_load.load( Cookie.get( cinema_cookie_name ).value, _$background );
+			}
+
+			user_info.cinema = true;
 		}else {
-			
+			img_load.load( Cookie.get( bg_cookie_name ).value, _$background );
+			user_info.cinema = false;
 		}
+
+		Store.del("user");
+		Store.set( "user", user_info );
 	});
 }
 
-function cinemaSetting( data ){
-	var img_url = data.cinemagraph[0].url;
+function bgLoadCheck(){
+	if( _$background.classList.contains("on") ){
+		$.data( _$loading, "$this").fadeOut("fast");
+	}else {
+		Delay_fn.set( bgLoadCheck, 1000 );
+	}
+}
 
-	img_load.load( img_url + "1.gif", _$background );
+function cinemaSetting( data ){
+	var ciname_url = data.cinemagraph[0].url;
+	var cinema_length = data.cinemagraph[1].total;
+	var random_cinema = Math.floor( Math.random() * cinema_length );
+
+	Cookie.set( cinema_cookie_name, ciname_url + random_cinema + ".gif", "1day" );
+
+	img_load.load( ciname_url + random_cinema + ".gif", _$background );
 }
 
 
@@ -1305,7 +1365,7 @@ function cinemaSetting( data ){
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../ajax/ajax":9,"../encryption":14,"../image_load/images_load":15,"../storage/storage":17,"./button":19}],24:[function(require,module,exports){
+},{"../ajax/ajax":9,"../cookie/cookie.js":11,"../delay_fn":13,"../encryption":14,"../image_load/images_load":15,"../storage/storage":17,"./button":19}],24:[function(require,module,exports){
 (function (global){
 "use strict";
 var todo_load = require("../ajax/ajax");

@@ -9,6 +9,7 @@ var URL = "https://api.unsplash.com/photos/?client_id=" + APP_ID;
 var bg_data = {};
 var data_name = "background-image";
 var cookie_name = data_name;
+var cinema_cookie_name = "cinema";
 var current_img_url;
 
 var _$background = _$.query(".background");
@@ -29,8 +30,28 @@ if( !Cookie.get( cookie_name ) ){
 		currentBgUrlSetting( Store.get( data_name ) );
 	}
 }else {
-	current_img_url = Cookie.get( cookie_name ).value;
-	img_load.load( current_img_url, _$background, _$loading );
+	if( !Store.get( "user" ) ){
+		current_img_url = Cookie.get( cookie_name ).value;
+		img_load.load( current_img_url, _$background, _$loading );
+	}else {
+		if( Store.get( "user" ).cinema ){
+			if( Cookie.get( cinema_cookie_name ) ){
+				current_img_url = Cookie.get( cinema_cookie_name ).value;
+				img_load.load( current_img_url, _$background, _$loading );
+			}else {
+				var user_info = Store.get("user");
+				user_info.cinema = false;
+				Store.del("user");
+				Store.set( "user", user_info );
+
+				current_img_url = Cookie.get( cookie_name ).value;
+				img_load.load( current_img_url, _$background, _$loading );	
+			}
+		}else {
+			current_img_url = Cookie.get( cookie_name ).value;
+			img_load.load( current_img_url, _$background, _$loading );
+		}
+	}
 }
 
 //unsplash 에서 이미지 가져오기

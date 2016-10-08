@@ -238,8 +238,8 @@ h1, h2 {
 }
 
 .background {
-			-webkit-transition: all 3s;
-			transition: all 3s;
+			-webkit-transition: all 1.5s;
+			transition: all 1.5s;
 }
 
 .join_container .question {
