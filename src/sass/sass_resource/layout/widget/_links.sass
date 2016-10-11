@@ -1,5 +1,5 @@
 .links_widget
-	+position( $p: absolute, $l: 15px, $t: 15px )	
+	+position( $p: absolute, $l: 15px, $t: 15px )
 	&.show
 		.links
 			@extend %opacity_1
@@ -12,6 +12,32 @@
 		font-size: 1.5rem
 		&:hover
 			@extend %opacity_1
+	#search
+		+position( $p: absolute, $l: 50px, $t: -4px )
+		width: 250px
+		font-size: 1.5rem
+		border-bottom: 2px solid transparent
+		&.on
+			border-bottom: 2px solid #fff
+
+		input
+			width: 225px
+			margin-left: 5px
+	.search_select
+		+position( $p: absolute, $l: 45px, $t: 25px )
+		font-size: 1.3rem
+		width: 160px
+		transition: all 1s
+		@extend %none
+		label
+			@extend %inline_block
+			@extend %cursor_pointer
+			width: 65px
+			margin-left: 10px
+			input
+				margin-right: 5px 
+		&.on
+			@extend %block
 
 .link_list_wrap
 	@extend %none

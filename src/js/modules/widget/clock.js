@@ -55,11 +55,13 @@ function nameSettingBlur( event ){
 
 function nameSettingEnter( event ){
 	var _this = event.target;
+	var _$todo_name = _$.query(".todo_name");
 
 	if( event.keyCode === 13 ){
 		var user_info = Store.get("user");
 		_this.setAttribute("contenteditable", "false");	
 		user_info.name = _this.innerText;
+		_$todo_name.textContent = " " + _this.innerText;
 		Store.set("user", user_info);
 	}
 }

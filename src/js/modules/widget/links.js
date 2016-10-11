@@ -10,9 +10,9 @@ var _$add_btn;
 var _$link_list;
 var _$links_widget;
 var _$add_link_wrap;
+var _$body = _$.query("body");
 
 var JSON = global.JSON;
-
 var links_html_url = "module/widget/links.html";
 
 module.exports = function(){
@@ -34,6 +34,46 @@ function linkSetting( data	){
 
 	bookmarkSetting();
 	addBtnSetting();
+	searchSetting();
+}
+
+function searchSetting(){
+	var _$search = _$.query("#search");
+	var _$input = _$.query(".search_txt");
+	var _$search_select = _$.query(".search_select");
+
+	_$.eventsOn( _$search, "click", searchOn );
+	_$.eventsOn( _$body, "focus", searchOff );
+	_$.eventsOn( _$input, "keydown", keywordSearch );
+
+	function searchOn( event ){
+		var _this = event.currentTarget;
+		_this.classList.add("on");
+		_$search_select.classList.add("on");
+		_$input.focus();
+	}
+
+	function searchOff( event ){
+		_$search.classList.remove("on");
+		_$search_select.classList.remove("on");
+	}
+
+	function keywordSearch( event ){
+		var _this = event.target;
+		var _$radio = _$.queryAll( "input", _$search_select );
+		var search_type;
+
+		if( event.keyCode === 13 ){
+			if( event.target.value !== "" ){
+				for( var t = 0; t < _$radio.length; t++ ){
+					if( _$radio[t].checked ){
+						location.href = _$radio[t].value + event.target.value;
+						return;
+					}
+				}
+			}
+		}
+	}
 }
 
 function bookmarkSetting(){

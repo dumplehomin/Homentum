@@ -343,6 +343,7 @@ var _this = module.exports = {
 var Store = require("./storage/storage");
 var Cookie = require("./cookie/cookie");
 var img_load = require("./image_load/images_load");
+var img_ajax = require("./ajax/ajax");
 
 var APP_ID = "0fcc3290724a3ffc55d72c6646b6cb6c0dd38986df38f3135656f6bef1443035";
 var URL = "https://api.unsplash.com/photos/?client_id=" + APP_ID;
@@ -352,6 +353,7 @@ var data_name = "background-image";
 var cookie_name = data_name;
 var cinema_cookie_name = "cinema";
 var current_img_url;
+var cinemagraph_json = "./cinemagraph/cinemagraph.json";
 
 var _$background = _$.query(".background");
 var _$loading = _$.query(".loading");
@@ -380,19 +382,30 @@ if( !Cookie.get( cookie_name ) ){
 				current_img_url = Cookie.get( cinema_cookie_name ).value;
 				img_load.load( current_img_url, _$background, _$loading );
 			}else {
-				var user_info = Store.get("user");
-				user_info.cinema = false;
-				Store.del("user");
-				Store.set( "user", user_info );
+				// var user_info = Store.get("user");
+				// user_info.cinema = false;
+				// Store.del("user");
+				// Store.set( "user", user_info );
 
-				current_img_url = Cookie.get( cookie_name ).value;
-				img_load.load( current_img_url, _$background, _$loading );	
+				// current_img_url = Cookie.get( cookie_name ).value;
+				// img_load.load( current_img_url, _$background, _$loading );
+				img_ajax.json( cinemagraph_json, cinemaSetting );
 			}
 		}else {
 			current_img_url = Cookie.get( cookie_name ).value;
 			img_load.load( current_img_url, _$background, _$loading );
 		}
 	}
+}
+
+function cinemaSetting( data ){
+	var ciname_url = data.cinemagraph[0].url;
+	var cinema_length = data.cinemagraph[1].total;
+	var random_cinema = Math.floor( Math.random() * cinema_length );
+
+	Cookie.set( cinema_cookie_name, ciname_url + random_cinema + ".gif", "1day" );
+
+	img_load.load( ciname_url + random_cinema + ".gif", _$background );
 }
 
 //unsplash 에서 이미지 가져오기
@@ -464,7 +477,7 @@ function currentBgUrlSetting( data ){
 
 	img_load.load( current_img_url, _$background, _$loading );
 }
-},{"./cookie/cookie":11,"./image_load/images_load":15,"./storage/storage":17}],11:[function(require,module,exports){
+},{"./ajax/ajax":9,"./cookie/cookie":11,"./image_load/images_load":15,"./storage/storage":17}],11:[function(require,module,exports){
 "use strict";
 
 module.exports = {
@@ -845,11 +858,13 @@ function nameSettingBlur( event ){
 
 function nameSettingEnter( event ){
 	var _this = event.target;
+	var _$todo_name = _$.query(".todo_name");
 
 	if( event.keyCode === 13 ){
 		var user_info = Store.get("user");
 		_this.setAttribute("contenteditable", "false");	
 		user_info.name = _this.innerText;
+		_$todo_name.textContent = " " + _this.innerText;
 		Store.set("user", user_info);
 	}
 }
@@ -937,9 +952,9 @@ var _$add_btn;
 var _$link_list;
 var _$links_widget;
 var _$add_link_wrap;
+var _$body = _$.query("body");
 
 var JSON = global.JSON;
-
 var links_html_url = "module/widget/links.html";
 
 module.exports = function(){
@@ -961,6 +976,46 @@ function linkSetting( data	){
 
 	bookmarkSetting();
 	addBtnSetting();
+	searchSetting();
+}
+
+function searchSetting(){
+	var _$search = _$.query("#search");
+	var _$input = _$.query(".search_txt");
+	var _$search_select = _$.query(".search_select");
+
+	_$.eventsOn( _$search, "click", searchOn );
+	_$.eventsOn( _$body, "focus", searchOff );
+	_$.eventsOn( _$input, "keydown", keywordSearch );
+
+	function searchOn( event ){
+		var _this = event.currentTarget;
+		_this.classList.add("on");
+		_$search_select.classList.add("on");
+		_$input.focus();
+	}
+
+	function searchOff( event ){
+		_$search.classList.remove("on");
+		_$search_select.classList.remove("on");
+	}
+
+	function keywordSearch( event ){
+		var _this = event.target;
+		var _$radio = _$.queryAll( "input", _$search_select );
+		var search_type;
+
+		if( event.keyCode === 13 ){
+			if( event.target.value !== "" ){
+				for( var t = 0; t < _$radio.length; t++ ){
+					if( _$radio[t].checked ){
+						location.href = _$radio[t].value + event.target.value;
+						return;
+					}
+				}
+			}
+		}
+	}
 }
 
 function bookmarkSetting(){
@@ -1396,6 +1451,7 @@ var todoStorageSet = {
 }
 
 function todoListSetting( data ){
+	var user_name = Store.get("user").name;
 	_$content.insertAdjacentHTML("beforeend", data);
 
 	_$todo_widget = _$.query(".todo_widget");
@@ -1403,6 +1459,9 @@ function todoListSetting( data ){
 
 	var _$todo =  _$.query(".todo");
 	Buttons( _$todo );
+
+	var _$todo_user_name = _$.query(".todo_name");
+	_$todo_user_name.textContent = " " + user_name;
 
 	_$todo_list = _$.query(".todo_list");
 	_$todo_list_wrap = _$.query(".todo_list_wrap");

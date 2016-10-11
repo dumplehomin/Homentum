@@ -2,6 +2,7 @@
 var Store = require("./storage/storage");
 var Cookie = require("./cookie/cookie");
 var img_load = require("./image_load/images_load");
+var img_ajax = require("./ajax/ajax");
 
 var APP_ID = "0fcc3290724a3ffc55d72c6646b6cb6c0dd38986df38f3135656f6bef1443035";
 var URL = "https://api.unsplash.com/photos/?client_id=" + APP_ID;
@@ -11,6 +12,7 @@ var data_name = "background-image";
 var cookie_name = data_name;
 var cinema_cookie_name = "cinema";
 var current_img_url;
+var cinemagraph_json = "./cinemagraph/cinemagraph.json";
 
 var _$background = _$.query(".background");
 var _$loading = _$.query(".loading");
@@ -39,19 +41,30 @@ if( !Cookie.get( cookie_name ) ){
 				current_img_url = Cookie.get( cinema_cookie_name ).value;
 				img_load.load( current_img_url, _$background, _$loading );
 			}else {
-				var user_info = Store.get("user");
-				user_info.cinema = false;
-				Store.del("user");
-				Store.set( "user", user_info );
+				// var user_info = Store.get("user");
+				// user_info.cinema = false;
+				// Store.del("user");
+				// Store.set( "user", user_info );
 
-				current_img_url = Cookie.get( cookie_name ).value;
-				img_load.load( current_img_url, _$background, _$loading );	
+				// current_img_url = Cookie.get( cookie_name ).value;
+				// img_load.load( current_img_url, _$background, _$loading );
+				img_ajax.json( cinemagraph_json, cinemaSetting );
 			}
 		}else {
 			current_img_url = Cookie.get( cookie_name ).value;
 			img_load.load( current_img_url, _$background, _$loading );
 		}
 	}
+}
+
+function cinemaSetting( data ){
+	var ciname_url = data.cinemagraph[0].url;
+	var cinema_length = data.cinemagraph[1].total;
+	var random_cinema = Math.floor( Math.random() * cinema_length );
+
+	Cookie.set( cinema_cookie_name, ciname_url + random_cinema + ".gif", "1day" );
+
+	img_load.load( ciname_url + random_cinema + ".gif", _$background );
 }
 
 //unsplash 에서 이미지 가져오기

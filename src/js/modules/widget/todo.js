@@ -27,6 +27,7 @@ var todoStorageSet = {
 }
 
 function todoListSetting( data ){
+	var user_name = Store.get("user").name;
 	_$content.insertAdjacentHTML("beforeend", data);
 
 	_$todo_widget = _$.query(".todo_widget");
@@ -34,6 +35,9 @@ function todoListSetting( data ){
 
 	var _$todo =  _$.query(".todo");
 	Buttons( _$todo );
+
+	var _$todo_user_name = _$.query(".todo_name");
+	_$todo_user_name.textContent = " " + user_name;
 
 	_$todo_list = _$.query(".todo_list");
 	_$todo_list_wrap = _$.query(".todo_list_wrap");

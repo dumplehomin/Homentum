@@ -5,15 +5,15 @@
 			content: "";
 }
 
-.setting_help .hotkey_account ul:after, a, .join_container .join_input, .links_widget.show .link_list_wrap, .link_list_wrap .add, .link_list_wrap .add_link_wrap.show, .todo_widget.show .todo_list_wrap, .todo_list_wrap.empty .todo_empty, .todo_list_wrap .todo_empty.empty, .todo_list_wrap li .todo_item, .todo_list_wrap .add_todo_wrap.show, .setting_widget.show .setting_wrap, .setting_wrap .setting_list li.show div, .setting_wrap .setting_list li > span, .setting_wrap .setting_list li > div label {
+.setting_help .hotkey_account ul:after, a, .join_container .join_input, .links_widget.show .link_list_wrap, .links_widget .search_select.on, .link_list_wrap .add, .link_list_wrap .add_link_wrap.show, .todo_widget.show .todo_list_wrap, .todo_list_wrap.empty .todo_empty, .todo_list_wrap .todo_empty.empty, .todo_list_wrap li .todo_item, .todo_list_wrap .add_todo_wrap.show, .setting_widget.show .setting_wrap, .setting_wrap .setting_list li.show div, .setting_wrap .setting_list li > span, .setting_wrap .setting_list li > div label {
 			display: block;
 }
 
-.loading.off, .link_list_wrap, .link_list_wrap .add_link_wrap, .todo_list_wrap, .todo_list_wrap .todo_empty, .setting_wrap, .setting_wrap .setting_list li > div, .setting_wrap .setting_list li > div span, .setting_background .switch input {
+.loading.off, .links_widget .search_select, .link_list_wrap, .link_list_wrap .add_link_wrap, .todo_list_wrap, .todo_list_wrap .todo_empty, .setting_wrap, .setting_wrap .setting_list li > div, .setting_wrap .setting_list li > div span, .setting_background .switch input {
 			display: none;
 }
 
-.loading .loader .square, .weather_widget .wind > span, .link_list_wrap li .destroy, .todo_list_wrap li .todo_remove, .setting_background .switch {
+.loading .loader .square, .weather_widget .wind > span, .links_widget .search_select label, .link_list_wrap li .destroy, .todo_list_wrap li .todo_remove, .setting_background .switch {
 			display: inline-block;
 }
 
@@ -89,7 +89,7 @@ a {
 			text-decoration: none;
 }
 
-.links_widget .links, .todo_widget .todo, .setting_widget .setting span, .setting_wrap .setting_list li > span, .setting_wrap .setting_list li > div button, .setting_background .slider {
+.links_widget .links, .links_widget .search_select label, .todo_widget .todo, .setting_widget .setting span, .setting_wrap .setting_list li > span, .setting_wrap .setting_list li > div button, .setting_background .slider {
 			cursor: pointer;
 }
 
@@ -303,6 +303,43 @@ h1, h2 {
 .links_widget .links {
 			opacity: .5;
 			font-size: 1.5rem;
+}
+
+.links_widget #search {
+			position: absolute;
+			top: -4px;
+			left: 50px;
+			width: 250px;
+			font-size: 1.5rem;
+			border-bottom: 2px solid transparent;
+}
+
+.links_widget #search.on {
+			border-bottom: 2px solid #fff;
+}
+
+.links_widget #search input {
+			width: 225px;
+			margin-left: 5px;
+}
+
+.links_widget .search_select {
+			position: absolute;
+			top: 25px;
+			left: 45px;
+			font-size: 1.3rem;
+			width: 160px;
+			-webkit-transition: all 1s;
+			transition: all 1s;
+}
+
+.links_widget .search_select label {
+			width: 65px;
+			margin-left: 10px;
+}
+
+.links_widget .search_select label input {
+			margin-right: 5px;
 }
 
 .link_list_wrap {
