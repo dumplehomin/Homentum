@@ -6,6 +6,7 @@ var Weather = require("./weather");
 var News = require("./news");
 var Link = require("./links");
 var Todo = require("./todo");
+var News = require("./news");
 var Setting = require("./setting");
 
 var _$loading = _$.query(".loading");
@@ -18,6 +19,7 @@ widget.push( Clock );
 widget.push( Weather );
 widget.push( Link );
 widget.push( Todo );
+widget.push( News );
 widget.push( Setting );
 // widget.push( News );
 

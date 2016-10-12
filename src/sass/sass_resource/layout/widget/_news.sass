@@ -1,0 +1,32 @@
+.news_widget
+	// @extend %over_hidden
+	+position( $p: absolute, $l: 50%, $r: 50%, $t: 10px )
+	width: 270px
+	height: 25px
+	transform: translateX( -50% )
+	border: 1px solid #fff
+	border-radius: 10px
+	.news_sliding
+		width: 100%
+		position: absolute
+		top: 0px
+		font-size: 1.2rem
+		&.on
+			transition: all 1s
+		li
+			padding: 0 10px
+			overflow: hidden
+			line-height: 2
+			text-overflow: ellipsis
+			white-space: nowrap
+			word-wrap: normal
+
+
+
+
+
+
+
+
+
+
