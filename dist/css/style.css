@@ -77,7 +77,7 @@ html, body, a {
 			left: 50%;
 }
 
-html, body, .link_list_wrap li a, .todo_list_wrap li .todo_item {
+html, body, .link_list_wrap li a, .todo_list_wrap li .todo_item, .news_widget {
 			overflow: hidden;
 }
 
@@ -502,8 +502,8 @@ h1, h2 {
 
 .news_widget {
 			position: absolute;
-			top: 10px;
 			right: 50%;
+			bottom: 10px;
 			left: 50%;
 			width: 270px;
 			height: 25px;
@@ -532,6 +532,45 @@ h1, h2 {
 			text-overflow: ellipsis;
 			white-space: nowrap;
 			word-wrap: normal;
+}
+
+.news_list {
+			position: absolute;
+			right: 50%;
+			bottom: 34px;
+			left: 50%;
+			width: 270px;
+			height: 0;
+			padding: 5px;
+			-webkit-transform: translateX(-50%);
+			        transform: translateX(-50%);
+			overflow: hidden;
+			border: 1px solid #fff;
+			background-color: rgba(0, 0, 0, 0.7);
+			-webkit-transition: all .5s;
+			transition: all .5s;
+			opacity: 0;
+}
+
+.news_list.on {
+			height: 250px;
+			opacity: 1;
+}
+
+.news_list li {
+			line-height: 2;
+}
+
+.news_list li a {
+			font-size: 1.2rem;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			word-wrap: normal;
+}
+
+.news_list li a:hover {
+			color: #aaa;
 }
 
 .setting_widget {

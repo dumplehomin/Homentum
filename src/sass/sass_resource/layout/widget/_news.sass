@@ -1,6 +1,6 @@
 .news_widget
-	// @extend %over_hidden
-	+position( $p: absolute, $l: 50%, $r: 50%, $t: 10px )
+	@extend %over_hidden
+	+position( $p: absolute, $l: 50%, $r: 50%, $b: 10px )
 	width: 270px
 	height: 25px
 	transform: translateX( -50% )
@@ -20,6 +20,30 @@
 			text-overflow: ellipsis
 			white-space: nowrap
 			word-wrap: normal
+.news_list
+	+position( $p: absolute, $l: 50%, $r: 50%, $b: 34px )
+	width: 270px
+	height: 0
+	padding: 5px
+	transform: translateX( -50% )
+	overflow: hidden
+	border: 1px solid #fff
+	background-color: rgba(0, 0, 0, 0.7)
+	transition: all .5s
+	opacity: 0
+	&.on
+		height: 250px
+		opacity: 1
+	li
+		line-height: 2
+		a
+			font-size: 1.2rem
+			overflow: hidden
+			text-overflow: ellipsis
+			white-space: nowrap
+			word-wrap: normal
+			&:hover
+				color: #aaa
 
 
 

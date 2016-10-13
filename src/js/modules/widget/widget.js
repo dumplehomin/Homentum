@@ -69,10 +69,16 @@ function bodyFocusEvent(){
 
 _$.eventsOn( _$body, "focus", function(){
 	var show_container = _$.queryAll( ".show", _$content );
+	var _$news_list = _$.query(".news_list");
+
 	if( show_container.length !== 0 ){
 		_$.each(show_container, function(_wid, index){
 			_wid.classList.remove("show");
 		});
+	}
+
+	if( _$news_list.classList.contains("on") ){
+		_$news_list.classList.remove("on");
 	}
 });
 
