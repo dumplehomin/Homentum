@@ -1163,9 +1163,11 @@ function bookmarkStorageSave( name, addr ){
 "use strict";
 var news_load = require("../ajax/ajax");
 var Delay_fn = require("../delay_fn");
+var Cookie = require("../cookie/cookie");
 // var new_url = "http://www.hani.co.kr/rss/";
 var news_url = "http://www.hani.co.kr/rss/";
 var news_html_url = "module/widget/news.html";
+var news_cookie_name = "news";
 
 var _$content = _$.query(".content_container");
 var _$news_widget;
@@ -1193,7 +1195,10 @@ function newsSetting( data ){
 		_$news_list.firstChild.firstChild.focus();
 	});
 
-	news_load.jsonp( "https://ajax.googleapis.com/ajax/services/feed/load?v=2.0&num=10&q=http://www.hani.co.kr/rss/", newsCall );
+	// if( !Cookie.get( news_cookie_name ) ){
+	// 	news_load.jsonp( "https://ajax.googleapis.com/ajax/services/feed/load?v=2.0&num=10&q=http://www.hani.co.kr/rss/", newsCall );
+	// }
+	news_load.jsonp( "https://ajax.googleapis.com/ajax/services/feed/load?v=2.0&num=10&q=" + news_url, newsCall );
 }
 
 function newsCall( data ){
@@ -1256,7 +1261,7 @@ function interval_news(){
 
 
 
-},{"../ajax/ajax":9,"../delay_fn":13}],23:[function(require,module,exports){
+},{"../ajax/ajax":9,"../cookie/cookie":11,"../delay_fn":13}],23:[function(require,module,exports){
 (function (global){
 "use strict";
 var setting_load = require("../ajax/ajax");
